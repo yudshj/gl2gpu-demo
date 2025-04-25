@@ -11,22 +11,36 @@
     <a href="https://github.com/yudshj/gl2gpu-demo" target="_blank">
         <img src="https://img.shields.io/badge/GitHub-Repo-blue?logo=github" alt="GitHub Repo" class="badge">
     </a>
+
     <div class="input-container">
         <label for="numObjects">Number of objects:</label>
         <input type="number" id="numObjects" value="100000" min="1">
     </div>
-    <div class="title">WebGL</div>
-    <div class="button-container">
-        <button onclick="navigate('/webgl/motionmark/')">MotionMark</button>
-        <button onclick="navigate('/webgl/jsgamesbench/')">JSGamesBench</button>
-        <button onclick="navigate('/webgl/aquarium/')">Aquarium</button>
+
+    <div class="section">
+        <div class="title">WebGL</div>
+        <div class="button-container">
+            <button onclick="navigate('/webgl/motionmark/')">MotionMark</button>
+            <button onclick="navigate('/webgl/jsgamesbench/')">JSGamesBench</button>
+            <button onclick="navigate('/webgl/aquarium/')">Aquarium</button>
+        </div>
     </div>
-    <div class="title">GL2GPU</div>
-    <div class="button-container">
-        <button onclick="navigate('/webgpu/motionmark/')">MotionMark</button>
-        <button onclick="navigate('/webgpu/jsgamesbench/')">JSGamesBench</button>
-        <button onclick="navigate('/webgpu/aquarium/')">Aquarium</button>
+
+    <div class="section">
+        <div class="title">GL2GPU</div>
+        <div class="button-container">
+            <button onclick="navigate('/webgpu/motionmark/')">MotionMark</button>
+            <button onclick="navigate('/webgpu/jsgamesbench/')">JSGamesBench</button>
+            <button onclick="navigate('/webgpu/aquarium/')">Aquarium</button>
+        </div>
     </div>
+
+    <!-- YouTube video embed -->
+    <div class="video-container">
+        <h2>Watch the GL2GPU Demo Video</h2>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/8fW1opcvCCk" title="GL2GPU Demo Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+
     <script>
         function navigate(baseURL) {
             const numObjects = document.getElementById('numObjects').value;
