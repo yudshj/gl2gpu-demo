@@ -187,13 +187,12 @@ font-weight: 500;
 text-decoration: underline;
 }
 
-/\* Responsive design \*/
 @media (max-width: 768px) {
 .main-header {
-flex-direction: column;
-gap: 1rem;
+    flex-direction: column;
+    gap: 1rem;
 }
 .benchmark-container {
-flex-direction: column;
+    flex-direction: column;
 }
 }
