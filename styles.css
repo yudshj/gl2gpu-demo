@@ -45,6 +45,18 @@ margin-left: 10px;
 vertical-align: middle;
 }
 
+.header-title-wrapper {
+    display: flex; /* 使用 flexbox 让 logo 和标题并排显示 */
+    align-items: center; /* 垂直居中对齐 */
+    gap: 15px; /* logo 和标题之间的间距 */
+}
+
+.header-logo {
+    height: 50px; /* 根据您的需求调整 logo 的高度 */
+    width: auto; /* 保持 logo 的宽高比 */
+    /* 您可以添加其他样式，例如 margin-right、border-radius 等 */
+}
+
 /\* Card-style sections \*/
 .card {
 background: var(--card-bg);
