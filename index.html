@@ -94,22 +94,45 @@
 
   <!-- teaser -->
   <section>
-    <div class="container project-container" id="main-figure">
-      <div class="row">
-        <div class="col-12 text-center">
-          <div class="aquarium-embed">
+    <div class="container-fluid comparison-container" id="main-figure">
+      <div class="aquarium-comparison">
+        <figure class="aquarium-panel">
+          <div class="aquarium-viewport">
             <iframe
               src="webgl/aquarium/?numObjects=500&amp;embed=true"
               title="Interactive WebGL Aquarium scene with 500 fish"
               loading="eager"
               allowfullscreen></iframe>
           </div>
-          <p class="aquarium-caption">
-            Interactive WebGL Aquarium · 500 fish ·
-            <a href="webgl/aquarium/?numObjects=500" target="_blank" rel="noopener">open full screen</a>
-          </p>
-        </div>
+          <figcaption>
+            <span class="caption-copy">
+              <strong>WebGL</strong>
+              <small>Native baseline · 500 fish</small>
+            </span>
+            <a href="webgl/aquarium/?numObjects=500" target="_blank" rel="noopener">Open full screen ↗</a>
+          </figcaption>
+        </figure>
+
+        <div class="comparison-arrow" aria-hidden="true"><span>→</span></div>
+
+        <figure class="aquarium-panel accelerated-panel">
+          <div class="aquarium-viewport">
+            <iframe
+              src="webgpu/aquarium/?numObjects=500&amp;embed=true"
+              title="Interactive GL2GPU Aquarium scene with 500 fish"
+              loading="eager"
+              allowfullscreen></iframe>
+          </div>
+          <figcaption>
+            <span class="caption-copy">
+              <strong>GL2GPU</strong>
+              <small>Translated to WebGPU · 500 fish</small>
+            </span>
+            <a href="webgpu/aquarium/?numObjects=500" target="_blank" rel="noopener">Open full screen ↗</a>
+          </figcaption>
+        </figure>
       </div>
+      <p class="comparison-note text-center">The same unmodified Aquarium workload, rendered side by side.</p>
     </div>
   </section>
   <br>
