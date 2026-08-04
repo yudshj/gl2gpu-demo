@@ -47,28 +47,107 @@ a { color: #007bff; }
   max-width: 1040px;
 }
 
-.aquarium-embed {
+.comparison-container {
+  width: 92%;
+  max-width: 1400px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.aquarium-comparison {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 74px minmax(0, 1fr);
+  align-items: center;
+  gap: 18px;
+}
+
+.aquarium-panel {
+  overflow: hidden;
+  margin: 0;
+  border: 1px solid #d5dbe1;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, .12);
+}
+
+.aquarium-viewport {
   overflow: hidden;
   width: 100%;
   aspect-ratio: 16 / 10;
-  margin: 0 auto;
-  border: 1px solid #adb5bd;
-  border-radius: 15px;
   background: #000;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, .14);
 }
 
-.aquarium-embed iframe {
+.aquarium-viewport iframe {
   display: block;
   width: 100%;
   height: 100%;
   border: 0;
 }
 
-.aquarium-caption {
-  margin: 8px 0 0;
+.aquarium-panel figcaption {
+  display: flex;
+  min-height: 76px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 13px 17px 14px;
+  border-top: 1px solid #e1e5e9;
+  text-align: left;
+}
+
+.caption-copy strong {
+  display: block;
+  color: #212529;
+  font-size: 21px;
+  line-height: 1.25;
+}
+
+.caption-copy small {
+  display: block;
+  margin-top: 2px;
   color: #6c757d;
-  font-size: 14px;
+  font-size: 12px;
+}
+
+.aquarium-panel figcaption a {
+  flex: 0 0 auto;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.accelerated-panel {
+  border-color: #9ac7f7;
+  box-shadow: 0 5px 20px rgba(0, 123, 255, .16);
+}
+
+.accelerated-panel figcaption {
+  background: #f5f9ff;
+}
+
+.comparison-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.comparison-arrow span {
+  display: flex;
+  width: 54px;
+  height: 54px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #007bff;
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(0, 123, 255, .28);
+  font-size: 31px;
+  line-height: 1;
+}
+
+.comparison-note {
+  margin: 13px 0 0;
+  color: #6c757d;
+  font-size: 13px;
 }
 
 .section-rule {
@@ -202,6 +281,21 @@ a { color: #007bff; }
 
 @media (max-width: 991.98px) {
   .project-container { width: 88%; }
+  .comparison-container { width: 96%; }
+  .aquarium-comparison {
+    grid-template-columns: minmax(0, 1fr) 52px minmax(0, 1fr);
+    gap: 10px;
+  }
+  .comparison-arrow span {
+    width: 42px;
+    height: 42px;
+    font-size: 25px;
+  }
+  .aquarium-panel figcaption {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
   .method-figure,
   .demo-video,
   .benchmark-row,
@@ -214,9 +308,32 @@ a { color: #007bff; }
   .venue-title { font-size: 23px; }
   .author-list { font-size: 17px; }
   .project-container { width: 100%; }
-  .aquarium-embed {
-    aspect-ratio: 4 / 3;
+  .comparison-container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .aquarium-comparison {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .aquarium-panel {
     border-radius: 10px;
+  }
+  .aquarium-viewport {
+    aspect-ratio: 4 / 3;
+  }
+  .comparison-arrow {
+    height: 42px;
+  }
+  .comparison-arrow span {
+    transform: rotate(90deg);
+  }
+  .aquarium-panel figcaption {
+    min-height: 0;
+    align-items: center;
+    flex-direction: row;
+    gap: 12px;
   }
   .method-figure { flex-direction: column; align-items: center; }
   .method-stage { width: 100%; min-height: 120px; }
