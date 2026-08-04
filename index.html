@@ -55,7 +55,7 @@
 
 <body>
   <!-- cover -->
-  <section>
+  <section class="hero-section">
     <div class="jumbotron text-center mt-0">
       <div class="container-fluid">
         <div class="row">
@@ -93,10 +93,10 @@
   </section>
 
   <!-- teaser -->
-  <section>
-    <div class="container-fluid comparison-container" id="main-figure">
+  <section class="feature-section">
+    <div class="container-fluid feature-container comparison-container" id="main-figure">
       <div class="aquarium-comparison">
-        <figure class="aquarium-panel">
+        <figure class="feature-card aquarium-panel">
           <div class="aquarium-viewport">
             <iframe
               src="webgl/aquarium/?numObjects=500&amp;embed=true"
@@ -115,7 +115,7 @@
 
         <div class="comparison-arrow" aria-hidden="true"><span>→</span></div>
 
-        <figure class="aquarium-panel accelerated-panel">
+        <figure class="feature-card aquarium-panel accelerated-panel">
           <div class="aquarium-viewport">
             <iframe
               src="webgpu/aquarium/?numObjects=500&amp;embed=true"
@@ -135,10 +135,9 @@
       <p class="comparison-note text-center">The same unmodified Aquarium workload, rendered side by side.</p>
     </div>
   </section>
-  <br>
 
   <!-- abstract -->
-  <section>
+  <section class="content-section">
     <div class="container project-container">
       <div class="row">
         <div class="col-12">
@@ -151,10 +150,9 @@
       </div>
     </div>
   </section>
-  <br><br>
 
   <!-- method -->
-  <section>
+  <section class="content-section">
     <div class="container project-container">
       <div class="row">
         <div class="col-12">
@@ -179,7 +177,6 @@
               <small>Optimized GPU commands</small>
             </div>
           </div>
-          <br>
           <p class="text-justify">
             GL2GPU patches the WebGL JavaScript interface to capture rendering commands and maintain an equivalent representation of implicit WebGL state. It translates GLSL shaders to WGSL, constructs WebGPU pipeline and resource descriptors, and records equivalent draw commands. A two-level cache avoids redundant generation of graphics resources and render states; uniform batching reduces GPU memory traffic; and a trie-based render-bundle manager identifies and reuses recurring command sequences. The resulting WebGPU workload preserves the behavior and visual output of the original application while reducing per-frame overhead.
           </p>
@@ -187,10 +184,9 @@
       </div>
     </div>
   </section>
-  <br><br>
 
   <!-- quantitative results -->
-  <section>
+  <section class="content-section">
     <div class="container project-container">
       <div class="row">
         <div class="col-12">
@@ -199,7 +195,7 @@
           <p class="text-justify">
             We evaluate GL2GPU on Mac, Windows, and Android devices using AMD, NVIDIA, Intel, and Snapdragon GPUs. The table reports the observed range of frame-time reduction over native WebGL; higher is better.
           </p>
-          <div class="table-responsive result-table-wrap">
+          <div class="table-responsive result-table-wrap result-surface">
             <table class="table table-bordered table-hover text-center result-table">
               <thead class="thead-light">
                 <tr>
@@ -218,10 +214,9 @@
       </div>
     </div>
   </section>
-  <br><br>
 
   <!-- video -->
-  <section>
+  <section class="content-section">
     <div class="container project-container">
       <div class="row">
         <div class="col-12">
@@ -234,10 +229,9 @@
       </div>
     </div>
   </section>
-  <br><br>
 
   <!-- live demo -->
-  <section id="live-demo">
+  <section class="content-section" id="live-demo">
     <div class="container project-container">
       <div class="row">
         <div class="col-12">
@@ -271,10 +265,9 @@
       </div>
     </div>
   </section>
-  <br><br>
 
   <!-- citation -->
-  <footer class="text-center">
+  <footer class="page-footer text-center">
     <div class="container project-container">
       <div class="row">
         <div class="col-12">
