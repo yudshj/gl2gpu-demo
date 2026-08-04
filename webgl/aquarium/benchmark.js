@@ -2207,6 +2207,8 @@ $(function(){
   }
 
   function initPostDOMLoaded() {
+    // The preview can reach DOMContentLoaded before main() assigns the canvas.
+    canvas = canvas || document.getElementById("canvas");
     if (g_aquariumConfig.enableVR) {
       if(navigator.getVRDisplays) {
         g_frameData = new VRFrameData();

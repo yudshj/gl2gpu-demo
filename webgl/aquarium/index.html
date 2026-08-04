@@ -34,6 +34,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>aquarium</title>
+<script>
+if (new URLSearchParams(window.location.search).get('embed') === 'true') {
+  document.documentElement.classList.add('aquarium-embed-mode');
+}
+</script>
 <style>
 html, body {
   width: 100%;
@@ -104,6 +109,12 @@ CANVAS {
   font-size: xx-small;
   border-radius: 10px;
   padding: 10px;
+}
+.aquarium-embed-mode #info,
+.aquarium-embed-mode .fpsContainer,
+.aquarium-embed-mode #uiContainer,
+.aquarium-embed-mode #msgContainer {
+  display: none !important;
 }
 </style>
 <link href="/js/jquery-ui-1.8.2.custom/css/ui-lightness/jquery-ui-1.8.2.custom.css" rel="stylesheet" />
@@ -889,5 +900,4 @@ void main() {
 }
 </script>
 </html>
-
 

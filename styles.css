@@ -47,11 +47,28 @@ a { color: #007bff; }
   max-width: 1040px;
 }
 
-.teaser-image {
-  width: 82%;
-  max-height: 610px;
-  object-fit: cover;
-  border-radius: 3px;
+.aquarium-embed {
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  margin: 0 auto;
+  border: 1px solid #adb5bd;
+  border-radius: 15px;
+  background: #000;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .14);
+}
+
+.aquarium-embed iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.aquarium-caption {
+  margin: 8px 0 0;
+  color: #6c757d;
+  font-size: 14px;
 }
 
 .section-rule {
@@ -185,7 +202,6 @@ a { color: #007bff; }
 
 @media (max-width: 991.98px) {
   .project-container { width: 88%; }
-  .teaser-image { width: 100%; }
   .method-figure,
   .demo-video,
   .benchmark-row,
@@ -198,7 +214,10 @@ a { color: #007bff; }
   .venue-title { font-size: 23px; }
   .author-list { font-size: 17px; }
   .project-container { width: 100%; }
-  .teaser-image { max-height: none; }
+  .aquarium-embed {
+    aspect-ratio: 4 / 3;
+    border-radius: 10px;
+  }
   .method-figure { flex-direction: column; align-items: center; }
   .method-stage { width: 100%; min-height: 120px; }
   .method-arrow { width: 100%; height: 42px; transform: rotate(90deg); }
