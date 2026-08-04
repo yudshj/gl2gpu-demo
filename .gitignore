@@ -1,3 +1,5 @@
 .DS_Store
 /api/output*
 @eaDir
+.playwright-cli/
+output/playwright/

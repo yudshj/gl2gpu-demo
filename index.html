@@ -1,163 +1,292 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="xHRKJOPOa8V3MmyhtZqJSLd-uB1rz_yEytVjNQqmBB4" />
-    <meta name="msvalidate.01" content="64368D0DC852FC3400CCC560DDE523D2" />
-    <!-- A more descriptive meta description -->
-    <meta name="description" content="Experience a live performance comparison between WebGL and GL2GPU, a technology that dynamically translates WebGL to WebGPU at runtime for significant speedups. Run benchmarks like MotionMark and Aquarium without any code changes.">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <!-- A more compelling title for browser tabs and search results -->
-    <title>GL2GPU Demo | Live WebGL vs. WebGPU Performance Benchmark</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-site-verification" content="xHRKJOPOa8V3MmyhtZqJSLd-uB1rz_yEytVjNQqmBB4">
+  <meta name="msvalidate.01" content="64368D0DC852FC3400CCC560DDE523D2">
+  <meta name="description" content="GL2GPU dynamically translates WebGL applications to WebGPU at runtime without application or browser modifications.">
+  <meta property="og:title" content="GL2GPU: Accelerating WebGL Applications via Dynamic API Translation to WebGPU">
+  <meta property="og:description" content="The official GL2GPU paper project page and live benchmark suite.">
+  <meta property="og:image" content="https://gl2gpu.hanyd.site/assets/logo.png">
+  <meta property="og:url" content="https://gl2gpu.hanyd.site/">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://gl2gpu.hanyd.site/">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="site.webmanifest">
+  <title>GL2GPU: Accelerating WebGL Applications via Dynamic API Translation to WebGPU</title>
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "GL2GPU Demo - Translate WebGL to WebGPU in your browser!",
-  "url": "https://gl2gpu.hanyd.site/",
-  "description": "GL2GPU Demo: Explore dynamic API translation from WebGL to WebGPU. This project significantly accelerates existing WebGL applications by intercepting and optimizing calls at the JavaScript runtime, all while preserving visual consistency.",
-  "about": {
-    "@type": "SoftwareApplication",
-    "name": "GL2GPU",
-    "url": "https://github.com/yudshj/GL2GPU",
-    "abstract": "GL2GPU is a dynamic translator that boosts WebGL rendering performance by converting WebGL API calls into WebGPU at JavaScript runtime — with no need to rewrite source code or modify the browser.",
-    "applicationCategory": "DeveloperApplication",
-    "operatingSystem": "Web Browser"
-  },
-  "author": {
+  <!-- The IDR / SAI3D project-page template uses Bootstrap 4.4.1. -->
+  <link rel="stylesheet" href="css/bootstrap-4.4.1.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="styles.css">
+
+  <script type="application/ld+json">
+  {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Yudong Han",
-    "url": "https://hanyd.site",
-    "image": "https://avatars.githubusercontent.com/u/32298687?v=4",
-    "sameAs": [
-      "https://scholar.google.com/citations?user=NSr44m0AAAAJ",
-      "https://orcid.org/0000-0003-4846-5803",
-      "https://github.com/yudshj",
-      "https://www.linkedin.com/in/yudshj",
-      "https://dblp.org/pid/239/8355.html"
-    ],
-    "affiliation": {
-      "@type": "Organization",
-      "name": "Peking University"
-    },
-    "jobTitle": "Ph.D. Candidate",
-    "knowsAbout": ["GL2GPU", "WebGL", "Computer Graphics", "WebGPU", "Federated Learning", "Web Intelligence", "Software Testing"]
+    "@type": "ScholarlyArticle",
+    "headline": "GL2GPU: Accelerating WebGL Applications via Dynamic API Translation to WebGPU",
+    "url": "https://gl2gpu.hanyd.site/",
+    "datePublished": "2025",
+    "sameAs": "https://doi.org/10.1145/3696410.3714785",
+    "author": [
+      {"@type": "Person", "name": "Yudong Han"},
+      {"@type": "Person", "name": "Weichen Bi"},
+      {"@type": "Person", "name": "Ruibo An"},
+      {"@type": "Person", "name": "Deyu Tian"},
+      {"@type": "Person", "name": "Qi Yang"},
+      {"@type": "Person", "name": "Yun Ma"}
+    ]
   }
-}
-</script>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WTVJQRP0NS"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  </script>
 
-  gtag('config', 'G-WTVJQRP0NS');
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WTVJQRP0NS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WTVJQRP0NS');
+  </script>
 </head>
+
 <body>
-    <div class="container">
-        <header class="main-header">
-            <div class="header-title-wrapper"> <img src="/assets/logo.png" alt="Your Logo" class="header-logo"> <h1>GL2GPU Live Demo</h1> </div>
-            <div class="header-links">
-                <a href="https://github.com/yudshj/GL2GPU" target="_blank" rel="noopener noreferrer">
-                    <img src="https://img.shields.io/badge/GitHub-Repo-blue?logo=github" alt="GitHub Repo" class="badge">
-                </a>
-                <a href="https://doi.org/10.1145/3696410.3714785" target="_blank" rel="noopener noreferrer">
-                    <img src="https://img.shields.io/badge/Read_the_Paper-WWW_2025-brightgreen" alt="Read the WWW 2025 Paper" class="badge">
-                </a>
+  <!-- cover -->
+  <section>
+    <div class="jumbotron text-center mt-0">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col">
+            <h2 class="paper-title"><b>GL2GPU: Accelerating WebGL Applications<br class="d-none d-lg-block"> via Dynamic API Translation to WebGPU</b></h2>
+            <br>
+            <h2 class="venue-title">The ACM Web Conference 2025</h2>
+            <hr>
+            <h5 class="author-list">
+              <br>
+              <a href="https://hanyd.site" target="_blank" rel="noopener">Yudong Han</a>&nbsp;&nbsp;&nbsp;
+              <span>Weichen Bi</span>&nbsp;&nbsp;&nbsp;
+              <span>Ruibo An</span>&nbsp;&nbsp;&nbsp;
+              <span>Deyu Tian</span>&nbsp;&nbsp;&nbsp;
+              <span>Qi Yang</span>&nbsp;&nbsp;&nbsp;
+              <span>Yun Ma</span>
+            </h5>
+            <br>
+            <p>Peking University</p>
+            <div class="row justify-content-center resource-row">
+              <div class="column">
+                <p class="mb-4"><a class="btn btn-lg btn-light" href="https://doi.org/10.1145/3696410.3714785" role="button" target="_blank" rel="noopener">Paper</a></p>
+              </div>
+              <div class="column">
+                <p class="mb-4"><a class="btn btn-lg btn-light" href="https://github.com/yudshj/GL2GPU" role="button" target="_blank" rel="noopener">Code</a></p>
+              </div>
+              <div class="column">
+                <p class="mb-4"><a class="btn btn-lg btn-light" href="#live-demo" role="button">Live Demo</a></p>
+              </div>
             </div>
-        </header>
-
-        <section class="card intro-section">
-            <h2>Accelerating WebGL with Zero Code Changes</h2>
-            <p>
-                Welcome to the live demonstration of <strong>GL2GPU</strong>, a dynamic translator that boosts WebGL rendering performance by converting API calls to WebGPU at JavaScript runtime. This demo allows you to directly compare the performance of standard WebGL against the accelerated GL2GPU version using popular benchmarks. For a detailed explanation of the technology, please refer to our <a href="https://doi.org/10.1145/3696410.3714785" target="_blank" rel="noopener noreferrer">WWW 2025 paper</a>.
-            </p>
-            <p>
-                <strong>The key advantage?</strong> This performance gain is achieved with <strong>no need to rewrite source code</strong> or modify the browser, making it a powerful solution for legacy WebGL applications.
-            </p>
-        </section>
-
-        <section class="card video-container">
-            <h2>Watch the Demo Now!</h2>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/8fW1opcvCCk" title="GL2GPU Video Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </section>
-
-        <div class="input-container">
-            <label for="numObjects">Number of objects:</label>
-            <input type="number" id="numObjects" value="100000" min="1">
+          </div>
         </div>
-
-        <div class="benchmark-container card">
-            <div class="section">
-                <div class="title">🐢 Standard WebGL</div>
-                <div class="button-container">
-                    <button onclick="navigate('/webgl/motionmark/')">MotionMark</button>
-                    <button onclick="navigate('/webgl/jsgamesbench/')">JSGamesBench</button>
-                    <button onclick="navigate('/webgl/aquarium/')">Aquarium</button>
-                </div>
-            </div>
-
-            <div class="section">
-                <div class="title">🐇 Accelerated with GL2GPU</div>
-                <div class="button-container">
-                    <button onclick="navigate('/webgpu/motionmark/')">MotionMark</button>
-                    <button onclick="navigate('/webgpu/jsgamesbench/')">JSGamesBench</button>
-                    <button onclick="navigate('/webgpu/aquarium/')">Aquarium</button>
-                </div>
-            </div>
-        </div>
-
-        <section class="card usage-guide">
-            <h3>How to Use This Demo</h3>
-            <ol>
-                <li>Use the input field below to set the number of objects for the benchmark (e.g., 100,000).</li>
-                <li>Click a benchmark button (e.g., "Aquarium") under the "WebGL" section to see the baseline performance.</li>
-                <li>Click the same benchmark button under the "GL2GPU" section to see the accelerated performance.</li>
-                <li>Observe the difference in frame rates and overall smoothness, especially on mobile devices or with high object counts.</li>
-            </ol>
-        </section>
-
-        <section class="card features-section">
-            <h2>Key Features of GL2GPU</h2>
-            <ul>
-                <li><strong>✅ Dynamic Translation:</strong> Automatically intercepts and translates WebGL calls to WebGPU in real time.</li>
-                <li><strong>🚀 Performance Boost:</strong> Achieves significant speedups (up to 87.7% on mobile) without modifying original applications.</li>
-                <li><strong>📦 Zero Modifications:</strong> Works entirely via JavaScript runtime and prototype patching. No browser or app changes required.</li>
-                <li><strong>🧠 Adaptive Optimizations:</strong> Uses shader translation, render state caching, uniform batching, and render bundle reuse for maximum efficiency.</li>
-            </ul>
-        </section>
-        
-        <footer class="main-footer">
-            <p>
-                Authored by <a href="https://hanyd.site" target="_blank" rel="noopener noreferrer">Yudong Han</a> (Peking University).
-            </p>
-            <p>
-                GL2GPU is part of a research paper that was accepted for an oral presentation at <a href="https://www2025.thewebconf.org/" target="_blank" rel="noopener noreferrer">The ACM Web Conference 2025</a>.
-            </p>
-        </footer>
+      </div>
     </div>
-    <script>
-        function navigate(baseURL) {
-            const numObjects = document.getElementById('numObjects').value;
-            if (numObjects) {
-                location.href = `${baseURL}?numObjects=${numObjects}`;
-            } else {
-                location.href = baseURL;
-            }
-        }
-    </script>
+  </section>
+
+  <!-- teaser -->
+  <section>
+    <div class="container project-container" id="main-figure">
+      <div class="row">
+        <div class="col-12 text-center">
+          <img class="img-fluid teaser-image" src="assets/logo.png" alt="GL2GPU translates WebGL applications to WebGPU for faster execution">
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+
+  <!-- abstract -->
+  <section>
+    <div class="container project-container">
+      <div class="row">
+        <div class="col-12">
+          <h3><strong>Abstract</strong></h3>
+          <hr class="section-rule">
+          <p class="text-justify">
+            WebGL remains the foundation of a large body of interactive graphics content on the Web, while WebGPU provides lower-level control and more efficient access to modern GPUs. Migrating an existing WebGL application to WebGPU, however, generally requires substantial engineering effort. We introduce <strong>GL2GPU</strong>, a dynamic translator that accelerates existing WebGL applications by converting WebGL API calls into WebGPU operations at JavaScript runtime. GL2GPU captures rendering commands, emulates WebGL state, translates shaders, and dynamically creates equivalent WebGPU resources and command sequences. It combines shader translation with two-level caching, uniform batching, and render-bundle reuse. GL2GPU requires no application source-code changes and no browser modifications. Evaluations on MotionMark, JSGameBench, and WebGL Aquarium show up to 45% average frame-time reduction across platforms while preserving visual consistency, with reductions of up to 87.7% on mobile workloads.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br><br>
+
+  <!-- method -->
+  <section>
+    <div class="container project-container">
+      <div class="row">
+        <div class="col-12">
+          <h3><strong>Method</strong></h3>
+          <hr class="section-rule">
+          <div class="method-figure" role="img" aria-label="GL2GPU translation pipeline from an unchanged WebGL application through runtime interception and optimization to WebGPU execution">
+            <div class="method-stage">
+              <span class="stage-label">Input</span>
+              <strong>WebGL Application</strong>
+              <small>Unmodified source code</small>
+            </div>
+            <div class="method-arrow" aria-hidden="true">→</div>
+            <div class="method-stage translator">
+              <span class="stage-label">Runtime</span>
+              <strong>GL2GPU</strong>
+              <small>State emulation · shader translation · adaptive caching</small>
+            </div>
+            <div class="method-arrow" aria-hidden="true">→</div>
+            <div class="method-stage">
+              <span class="stage-label">Output</span>
+              <strong>WebGPU</strong>
+              <small>Optimized GPU commands</small>
+            </div>
+          </div>
+          <br>
+          <p class="text-justify">
+            GL2GPU patches the WebGL JavaScript interface to capture rendering commands and maintain an equivalent representation of implicit WebGL state. It translates GLSL shaders to WGSL, constructs WebGPU pipeline and resource descriptors, and records equivalent draw commands. A two-level cache avoids redundant generation of graphics resources and render states; uniform batching reduces GPU memory traffic; and a trie-based render-bundle manager identifies and reuses recurring command sequences. The resulting WebGPU workload preserves the behavior and visual output of the original application while reducing per-frame overhead.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br><br>
+
+  <!-- quantitative results -->
+  <section>
+    <div class="container project-container">
+      <div class="row">
+        <div class="col-12">
+          <h3><strong>Performance Results</strong></h3>
+          <hr class="section-rule">
+          <p class="text-justify">
+            We evaluate GL2GPU on Mac, Windows, and Android devices using AMD, NVIDIA, Intel, and Snapdragon GPUs. The table reports the observed range of frame-time reduction over native WebGL; higher is better.
+          </p>
+          <div class="table-responsive result-table-wrap">
+            <table class="table table-bordered table-hover text-center result-table">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">Benchmark</th>
+                  <th scope="col">Average Frame-Time Reduction</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">MotionMark</th><td>73.9% – 87.7%</td></tr>
+                <tr><th scope="row">JSGameBench</th><td>19.3% – 61.4%</td></tr>
+                <tr><th scope="row">WebGL Aquarium</th><td>3.3% – 63.8%</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br><br>
+
+  <!-- video -->
+  <section>
+    <div class="container project-container">
+      <div class="row">
+        <div class="col-12">
+          <h3><strong>Video</strong></h3>
+          <hr class="section-rule">
+          <div class="embed-responsive embed-responsive-16by9 demo-video">
+            <iframe class="embed-responsive-item" src="https://www.youtube-nocookie.com/embed/8fW1opcvCCk" title="GL2GPU demonstration video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br><br>
+
+  <!-- live demo -->
+  <section id="live-demo">
+    <div class="container project-container">
+      <div class="row">
+        <div class="col-12">
+          <h3><strong>Live Demo</strong></h3>
+          <hr class="section-rule">
+          <p class="text-justify">Run the same benchmark with native WebGL and with GL2GPU. Set an identical workload for both versions, open the matching buttons in separate tabs, and compare frame time, smoothness, and visual output.</p>
+
+          <div class="demo-support text-center" id="supportNote" role="status">Checking WebGPU support…</div>
+          <div class="form-inline justify-content-center workload-form">
+            <label for="numObjects"><strong>Number of objects:&nbsp;</strong></label>
+            <input class="form-control" type="number" id="numObjects" value="100000" min="1" max="1000000" step="1000" inputmode="numeric">
+          </div>
+
+          <div class="row benchmark-row text-center">
+            <div class="col-md-6 benchmark-column">
+              <h4>Standard WebGL</h4>
+              <hr>
+              <button class="btn btn-secondary btn-lg benchmark-button" type="button" data-path="webgl/motionmark/">MotionMark</button>
+              <button class="btn btn-secondary btn-lg benchmark-button" type="button" data-path="webgl/jsgamesbench/">JSGameBench</button>
+              <button class="btn btn-secondary btn-lg benchmark-button" type="button" data-path="webgl/aquarium/">Aquarium</button>
+            </div>
+            <div class="col-md-6 benchmark-column">
+              <h4>Accelerated with GL2GPU</h4>
+              <hr>
+              <button class="btn btn-primary btn-lg benchmark-button" type="button" data-path="webgpu/motionmark/">MotionMark</button>
+              <button class="btn btn-primary btn-lg benchmark-button" type="button" data-path="webgpu/jsgamesbench/">JSGameBench</button>
+              <button class="btn btn-primary btn-lg benchmark-button" type="button" data-path="webgpu/aquarium/">Aquarium</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br><br>
+
+  <!-- citation -->
+  <footer class="text-center">
+    <div class="container project-container">
+      <div class="row">
+        <div class="col-12">
+          <h3><strong>Citation</strong></h3>
+          <hr class="section-rule">
+          <div class="bibtexsection text-left">@inproceedings{han2025gl2gpu,
+  author    = {Han, Yudong and Bi, Weichen and An, Ruibo and
+               Tian, Deyu and Yang, Qi and Ma, Yun},
+  title     = {GL2GPU: Accelerating WebGL Applications via
+               Dynamic API Translation to WebGPU},
+  booktitle = {Proceedings of the ACM Web Conference 2025},
+  pages     = {751--762},
+  year      = {2025},
+  doi       = {10.1145/3696410.3714785}
+}</div>
+          <hr>
+          <p class="template-credit">Website template adapted from the <a href="https://lioryariv.github.io/idr/" target="_blank" rel="noopener">IDR</a> and <a href="https://yd-yin.github.io/SAI3D/" target="_blank" rel="noopener">SAI3D</a> project pages.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const workloadInput = document.getElementById('numObjects');
+    function normalizedWorkload() {
+      const value = Number.parseInt(workloadInput.value, 10);
+      return Number.isFinite(value) ? Math.min(1000000, Math.max(1, value)) : 100000;
+    }
+
+    document.querySelectorAll('[data-path]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        const target = new URL(button.dataset.path, window.location.href);
+        target.searchParams.set('numObjects', normalizedWorkload());
+        window.open(target.href, '_blank', 'noopener');
+      });
+    });
+
+    const supportNote = document.getElementById('supportNote');
+    if ('gpu' in navigator) {
+      supportNote.textContent = 'WebGPU is available in this browser. GL2GPU demos are ready.';
+      supportNote.classList.add('supported');
+    } else {
+      supportNote.textContent = 'WebGPU is unavailable. Use a current browser release for the accelerated demos.';
+      supportNote.classList.add('unsupported');
+    }
+  </script>
 </body>
 </html>
